@@ -70,5 +70,22 @@ router.put('/:id', (req, res) => {
       });
   });
   
+router.delete('/:id', (req, res) => {
+    if (!ObjectId.isValid(req.params.id))
+        return res.status(400).send(`No record with given id : ${req.params.id}`);
+        
+    Employee.findByIdAndRemove(req.params.id)
+      .then(updatedEmp => {
+        if (!updatedEmp) {
+          return res.status(404).send(`No record found with id: ${req.params.id}`);
+        }
+        res.send(updatedEmp);
+      })
+      .catch(err => {
+        console.log('Error in Employee Update: ' + JSON.stringify(err, undefined, 2));
+        res.status(500).send('Error in Employee Update');
+      });
+});
+
 
 module.exports = router;
