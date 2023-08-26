@@ -9,9 +9,8 @@ import { Employee } from './employee.model';
   providedIn: 'root'
 })
 export class EmployeeService {
-  selectedEmployee: Employee = new Employee();
-  employees: Employee[] = [];
-  
-  constructor(private http: HttpClient) { }
-}
+  selectedEmployee!: Employee;
+  employees!: Employee[];
 
+  constructor() { }
+}
