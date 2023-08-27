@@ -12,17 +12,27 @@ import { Employee } from '../shared/employee.model';
 })
 export class EmployeeComponent implements OnInit {
 
-
   constructor(public  employeeService: EmployeeService) { }
 
   ngOnInit() {
-
+    this.resetForm();
   }
 
   onSubmit(employeeForm){
 
   }
-  resetForm(s){
+
+  resetForm(form?: NgForm){
+  if(form)
+    form.reset();
+    this.employeeService.selectedEmployee = {
+    _id:"",
+    name:"",
+    position:"",
+    office:"",
+    salary:null
+  }
+
 
   }
 
