@@ -32,8 +32,8 @@ export class EmployeeComponent implements OnInit {
     office:"",
     salary:null
   }
-
-
   }
 
+
+  
 }
